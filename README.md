@@ -17,31 +17,17 @@ A CLI tool that automatically generates daily work reports from Claude Code usag
 
 ## 📦 Installation
 
+Install the CLI globally using npm:
+
+```bash
+npm install -g claude-daily-report
+```
+
 ### Prerequisites
 
 - Node.js 16.0.0 or higher
 - Claude Code installed and used (history files in `~/.claude/projects`)
 
-### Development Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/your-username/claude-daily-reports.git
-cd claude-daily-reports
-
-# Install dependencies
-npm install
-
-# Build the project
-npm run build
-```
-
-### Global Installation (Future)
-
-```bash
-# Will be available after npm publication
-npm install -g claude-daily-report
-```
 
 ## 🚀 Quick Start
 
@@ -49,39 +35,39 @@ npm install -g claude-daily-report
 
 ```bash
 # Generate today's report
-npm run dev
+claude-daily-report
 
 # Generate report for specific date
-npm run dev -- 2025-07-03
-npm run dev -- --date 2025-07-03
+claude-daily-report 2025-07-03
+claude-daily-report --date 2025-07-03
 
 # Show summary only
-npm run dev -- --summary
+claude-daily-report --summary
 ```
 
 ### Project Management
 
 ```bash
 # List available projects
-npm run dev -- projects
+claude-daily-report projects
 
 # Generate report for specific project
-npm run dev -- --project expense-checker
-npm run dev -- -p claude-daily-reports
+claude-daily-report --project expense-checker
+claude-daily-report -p claude-daily-reports
 ```
 
 ### Output Options
 
 ```bash
 # Save to markdown file
-npm run dev -- --output daily-report.md
-npm run dev -- -o daily-report.md
+claude-daily-report --output daily-report.md
+claude-daily-report -o daily-report.md
 
 # Generate JSON report
-npm run dev -- --format json --output report.json
+claude-daily-report --format json --output report.json
 
 # Generate HTML report
-npm run dev -- --format html --output report.html
+claude-daily-report --format html --output report.html
 ```
 
 ## 📋 Command Reference
@@ -193,14 +179,23 @@ The tool consists of several key components:
 
 ## 🔧 Development
 
+For development, clone the repository and install dependencies.
+
 ### Scripts
 
 ```bash
-# Development mode (with TypeScript)
-npm run dev -- [commands]
+# Clone the repository
+git clone https://github.com/spyder-team/claude-daily-reports.git
+cd claude-daily-reports
 
-# Build TypeScript to JavaScript
+# Install dependencies
+npm install
+
+# Build the project
 npm run build
+
+# Run in development mode (with TypeScript)
+npm run dev -- [commands]
 
 # Run built version
 npm start
@@ -233,25 +228,25 @@ src/
 
 ```bash
 # Morning: Check yesterday's work
-npm run dev -- summary $(date -d "yesterday" +%Y-%m-%d)
+claude-daily-report summary $(date -d "yesterday" +%Y-%m-%d)
 
 # End of day: Generate today's report
-npm run dev -- --output today.md
+claude-daily-report --output today.md
 
 # Weekly review: Generate reports for specific projects
-npm run dev -- -p my-important-project -o weekly-update.md
+claude-daily-report -p my-important-project -o weekly-update.md
 ```
 
 ### Integration with Other Tools
 
 ```bash
 # Generate JSON for further processing
-npm run dev -- --format json | jq '.summary'
+claude-daily-report --format json | jq '.summary'
 
 # Create weekly reports
 for i in {1..7}; do
   date=$(date -d "$i days ago" +%Y-%m-%d)
-  npm run dev -- $date -o "reports/daily-$date.md"
+  claude-daily-report $date -o "reports/daily-$date.md"
 done
 ```
 
@@ -275,7 +270,7 @@ The tool automatically detects your Claude Code installation and project structu
 ls ~/.claude/projects
 
 # Verify project directory structure
-npm run dev -- projects
+claude-daily-report projects
 ```
 
 **Permission errors**
@@ -287,18 +282,18 @@ chmod -R 755 ~/.claude/projects
 **Date parsing errors**
 ```bash
 # Use YYYY-MM-DD format
-npm run dev -- 2025-07-03  # ✅ Correct
-npm run dev -- 07/03/2025  # ❌ Incorrect
+claude-daily-report 2025-07-03  # ✅ Correct
+claude-daily-report 07/03/2025  # ❌ Incorrect
 ```
 
 ### Debug Mode
 
 ```bash
 # Enable verbose output for troubleshooting
-npm run dev -- --verbose
+claude-daily-report --verbose
 
 # Check specific project
-npm run dev -- -p project-name --verbose
+claude-daily-report -p project-name --verbose
 ```
 
 ## 🗺️ Roadmap
@@ -347,9 +342,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/your-username/claude-daily-reports/issues)
-- 💡 **Feature Requests**: [GitHub Discussions](https://github.com/your-username/claude-daily-reports/discussions)
-- 📖 **Documentation**: [Wiki](https://github.com/your-username/claude-daily-reports/wiki)
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/spyder-team/claude-daily-reports/issues)
+- 💡 **Feature Requests**: [GitHub Discussions](https://github.com/spyder-team/claude-daily-reports/discussions)
+- 📖 **Documentation**: [Wiki](https://github.com/spyder-team/claude-daily-reports/wiki)
 
 ---
 
